@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolder.fit Complete User & Sales Manual</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,80 1000,100 0,100"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 60px 40px;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border-left: 5px solid #667eea;
+        }
+
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .toc-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .toc-item i {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .toc-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .toc-item p {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            page-break-inside: avoid;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-header i {
+            font-size: 2.5em;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card i {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.2em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .highlight-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 0 auto 20px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .feature-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .feature-card:hover, .toc-item:hover, .step:hover {
+                transform: none !important;
+            }
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .icon-item i {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
+            border-left: 5px solid #ff9800;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4em;
+            color: #ff9800;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i> Bolder.fit
+                </div>
+                <div class="tagline">Complete User & Sales Manual</div>
+                <p>Your Comprehensive Guide to the Next Generation Online Fitness Coaching Platform</p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number"><i class="fas fa-users"></i></span>
+                        <span class="stat-label">For Coaches & Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number"><i class="fas fa-chart-line"></i></span>
+                        <span class="stat-label">Sales Strategies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number"><i class="fas fa-rocket"></i></span>
+                        <span class="stat-label">Growth Tools</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="toc">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <div class="toc-grid">
+                    <div class="toc-item">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Platform Overview</h3>
+                        <p>Core purpose, target users, and key differentiators</p>
+                    </div>
+                    <div class="toc-item">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Platform Features</h3>
+                        <p>Detailed breakdown of all system capabilities</p>
+                    </div>
+                    <div class="toc-item">
+                        <i class="fas fa-route"></i>
+                        <h3>User Journey Guide</h3>
+                        <p>Step-by-step guidance for coaches and clients</p>
+                    </div>
+                    <div class="toc-item">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Sales Strategies</h3>
+                        <p>Lead generation, conversion, and retention tactics</p>
+                    </div>
+                    <div class="toc-item">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Marketing & Growth</h3>
+                        <p>Content marketing, partnerships, and referral programs</p>
+                    </div>
+                    <div class="toc-item">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Success Metrics</h3>
+                        <p>KPIs, implementation roadmap, and resources</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <div class="section-title">Executive Summary</div>
+                        <div class="section-subtitle">Understanding Bolder.fit's Core Value Proposition</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-lightbulb"></i> Key Insight</h4>
+                    <p>Bolder.fit is a comprehensive fitness coaching platform that connects fitness professionals with clients, providing an all-in-one solution for managing coaching businesses. Unlike traditional fitness platforms that focus solely on consumers, Bolder.fit is designed to empower fitness coaches with the tools they need to grow and manage their businesses effectively.</p>
+                </div>
+
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <i class="fas fa-users-cog"></i>
+                        <h4>Client Management</h4>
+                        <p>Streamlined workflows</p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Progress Tracking</h4>
+                        <p>Comprehensive analytics</p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4>E-commerce</h4>
+                        <p>Global program sales</p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Payment Processing</h4>
+                        <p>Secure transactions</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-cogs"></i>
+                    <div>
+                        <div class="section-title">Platform Features</div>
+                        <div class="section-subtitle">Comprehensive Tool Suite for Fitness Professionals</div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-users"></i> Client Management System</h3>
+                        <p><strong>What it does:</strong> Eliminates the need for spreadsheets and endless messaging</p>
+                        <ul>
+                            <li>Easy client invitation system</li>
+                            <li>Centralized client database</li>
+                            <li>Integrated communication tools</li>
+                            <li>Client onboarding workflows</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-dumbbell"></i> Program Creation</h3>
+                        <p><strong>What it does:</strong> Enables coaches to create custom workout and nutrition plans</p>
+                        <ul>
+                            <li>Drag-and-drop workout builder</li>
+                            <li>Nutrition plan templates</li>
+                            <li>Exercise library with videos</li>
+                            <li>Customizable meal plans</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-chart-bar"></i> Progress Tracking</h3>
+                        <p><strong>What it does:</strong> Provides comprehensive monitoring of client progress</p>
+                        <ul>
+                            <li>Workout activity tracking</li>
+                            <li>Nutrition progress monitoring</li>
+                            <li>Weekly and monthly reports</li>
+                            <li>Visual progress charts</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-store"></i> E-commerce & Business</h3>
+                        <p><strong>What it does:</strong> Enables coaches to sell programs and manage their business</p>
+                        <ul>
+                            <li>Global program sales capability</li>
+                            <li>Digital product delivery</li>
+                            <li>Secure payment processing</li>
+                            <li>Integrated wallet system</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-route"></i>
+                    <div>
+                        <div class="section-title">User Journey Guide</div>
+                        <div class="section-subtitle">Step-by-Step Success Paths</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-graduation-cap"></i> For Fitness Coaches</h4>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Platform Registration</h4>
+                        <ul>
+                            <li>Sign up as fitness professional</li>
+                            <li>Complete coach profile</li>
+                            <li>Set up payment processing</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Business Setup</h4>
+                        <ul>
+                            <li>Create program templates</li>
+                            <li>Set pricing tiers</li>
+                            <li>Upload digital products</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Client Acquisition</h4>
+                        <ul>
+                            <li>Import existing clients</li>
+                            <li>Send invitation links</li>
+                            <li>Share coach profile</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Daily Management</h4>
+                        <ul>
+                            <li>Review progress reports</li>
+                            <li>Update workout plans</li>
+                            <li>Monitor analytics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-user"></i> For Fitness Clients</h4>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Platform Access</h4>
+                        <ul>
+                            <li>Download mobile app</li>
+                            <li>Accept coach invitation</li>
+                            <li>Complete fitness assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Program Engagement</h4>
+                        <ul>
+                            <li>Review workout plan</li>
+                            <li>Access nutrition guidelines</li>
+                            <li>Learn exercise form</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Daily Usage</h4>
+                        <ul>
+                            <li>Log workouts and meals</li>
+                            <li>Complete exercises</li>
+                            <li>Communicate with coach</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Progress Monitoring</h4>
+                        <ul>
+                            <li>Review progress reports</li>
+                            <li>Celebrate achievements</li>
+                            <li>Adjust goals</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-handshake"></i>
+                    <div>
+                        <div class="section-title">Sales Strategy Guide</div>
+                        <div class="section-subtitle">Converting Leads to Successful Coaches</div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-target"></i> Target Audience</h3>
+                        <ul>
+                            <li><strong>Independent Personal Trainers:</strong> Focus on business growth</li>
+                            <li><strong>Gym Owners:</strong> Emphasize scalability</li>
+                            <li><strong>Online Coaches:</strong> All-in-one solution benefits</li>
+                            <li><strong>Nutritionists:</strong> Client management focus</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-magnet"></i> Lead Magnets</h3>
+                        <ul>
+                            <li>Free trial periods (14-30 days)</li>
+                            <li>"Complete Guide to Online Coaching" eBook</li>
+                            <li>Webinar: "Scale Your Fitness Business"</li>
+                            <li>Template library access</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-comments"></i> Pain Points</h3>
+                        <div class="quote-box">
+                            Tired of juggling spreadsheets, multiple apps, and endless messages?
+                        </div>
+                        <ul>
+                            <li>Struggling with client progress tracking</li>
+                            <li>Want to sell programs globally</li>
+                            <li>Need tools to scale business</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-trophy"></i> Value Propositions</h3>
+                        <ul>
+                            <li>All-in-one platform replacing 5+ tools</li>
+                            <li>Increase client retention rates</li>
+                            <li>Generate passive income globally</li>
+                            <li>Save 10+ hours per week</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-phone"></i> Sales Process</h4>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Discovery Call (15 min)</h4>
+                            <p>Understand workflow and pain points</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Personalized Demo (30 min)</h4>
+                            <p>Show relevant features and ROI potential</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Trial Setup (15 min)</h4>
+                            <p>Guide setup and schedule check-ins</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <div>
+                        <div class="section-title">Marketing & Growth</div>
+                        <div class="section-subtitle">Scaling Your Coaching Business</div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-pen"></i> Content Marketing</h3>
+                        <ul>
+                            <li>Blog posts about business management</li>
+                            <li>Success stories and case studies</li>
+                            <li>Video tutorials on features</li>
+                            <li>Webinar series on trends</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-handshake"></i> Partnerships</h3>
+                        <ul>
+                            <li>Fitness equipment manufacturers</li>
+                            <li>Supplement companies</li>
+                            <li>Certification organizations</li>
+                            <li>Business coaching services</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-users"></i> Referral Program</h3>
+                        <ul>
+                            <li>Incentivize existing coaches</li>
+                            <li>Commission-based rewards</li>
+                            <li>Affiliate program for influencers</li>
+                            <li>Success-based bonuses</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-chart-line"></i> Growth Metrics</h3>
+                        <ul>
+                            <li>Customer acquisition cost</li>
+                            <li>Monthly recurring revenue</li>
+                            <li>Customer lifetime value</li>
+                            <li>Platform usage statistics</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <div class="section-title">Success Metrics & Implementation</div>
+                        <div class="section-subtitle">Measuring and Achieving Success</div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value"><i class="fas fa-users"></i></div>
+                        <div class="metric-label">Active Clients</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value"><i class="fas fa-percentage"></i></div>
+                        <div class="metric-label">Retention Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="metric-label">Revenue Growth</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value"><i class="fas fa-clock"></i></div>
+                        <div class="metric-label">Time Saved</div>
+                    </div>
+                </div>
+
+                
